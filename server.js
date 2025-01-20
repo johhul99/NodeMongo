@@ -1,10 +1,11 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const PORT = 5250;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const Product = require('./Models/productModel');
 
 
 app.get('/', (req, res) => {
@@ -17,7 +18,7 @@ app.post('/blogpost', (req, res) => {
 
 
 mongoose.
-connect('mongodb+srv://johanhultin99:braskmannen99@cluster0.l2ff3.mongodb.net/products-api?retryWrites=true&w=majority&appName=Cluster0')
+connect(process.env.MONGO_URI)
 .then(() => {
     console.log('Connected to Mongo DB');
     app.listen(PORT, () => {
