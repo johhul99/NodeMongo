@@ -16,12 +16,11 @@ app.post('/blogpost', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-    console.log("Up and running on PORT 5250!");
-});
-
 mongoose.
-    connect('mongodb+srv://johanhultin99:braskmannen99@cluster0.l2ff3.mongodb.net/products-api?retryWrites=true&w=majority&appName=Cluster0')
-    .then(() => {
+connect('mongodb+srv://johanhultin99:braskmannen99@cluster0.l2ff3.mongodb.net/products-api?retryWrites=true&w=majority&appName=Cluster0')
+.then(() => {
     console.log('Connected to Mongo DB');
+    app.listen(PORT, () => {
+        console.log("Up and running on PORT 5250!");
     });
+});
